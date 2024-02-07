@@ -1,7 +1,6 @@
 
 variable "project" {
   description = "The project where the resources will be created"
-  default     = "gcp-terraform-2-413609"
 }
 
 variable "default_region" {
@@ -16,6 +15,7 @@ variable "default_zone" {
 
 variable "instance_zone" {
   description = "The zone where the resources will be created"
+  default     = "europe-west1-c"
 }
 
 variable "machine_type" {
