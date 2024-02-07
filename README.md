@@ -1,1 +1,1 @@
-# Experiments with terraform basics in Goggle Cloud
+# Experiments with terraform basics in Google Cloud
