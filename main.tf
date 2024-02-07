@@ -28,14 +28,25 @@ resource "google_compute_instance" "terraform-vm-1" {
     }
 }
 
- module "module-instance-1" {
-   source = "./modules/compute_instance"
-   name = "module-instance-1"
-   labels = {"app" = "frontend"}
- }
- 
- module "module-instance-2" {
-   source = "./modules/compute_instance"
-   name = "module-instance-2"
-   labels = {"app" = "backend"}
- }
+module "module-instance-1" {
+  source = "./modules/compute_instance"
+  name = "module-instance-1"
+  labels = {"app" = "frontend"}
+}
+
+module "module-instance-2" {
+  source = "./modules/compute_instance"
+  name = "module-instance-2"
+  labels = {"app" = "backend"}
+}
+
+variable "bucket_names" {
+  type = list(string)
+  default = ["lazlo-log-bucket-42", "lazlo-image-bucket-42"]
+}
+
+resource "google_storage_bucket" "example" {
+  for_each = toset(var.bucket_names)
+  name     = each.key
+  location = "EU"
+}
