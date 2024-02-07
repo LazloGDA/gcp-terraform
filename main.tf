@@ -9,7 +9,7 @@ resource "google_compute_instance" "terraform-vm-1" {
     name = "terraform-vm-1"
     machine_type = var.machine_type
     zone = var.instance_zone
-
+    
     boot_disk {
       initialize_params {
         image = var.image
@@ -27,3 +27,15 @@ resource "google_compute_instance" "terraform-vm-1" {
       automatic_restart = false
     }
 }
+
+ module "module-instance-1" {
+   source = "./modules/compute_instance"
+   name = "module-instance-1"
+   labels = {"app" = "frontend"}
+ }
+ 
+ module "module-instance-2" {
+   source = "./modules/compute_instance"
+   name = "module-instance-2"
+   labels = {"app" = "backend"}
+ }
