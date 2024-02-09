@@ -50,3 +50,14 @@ resource "google_storage_bucket" "example" {
   name     = each.key
   location = "EU"
 }
+
+# resource "google_sql_database_instance" "my-db-1" {
+#     name = "lazlo-db-instance"
+#     database_version = "MYSQL_8_0"
+#     region = "europe-west10"
+# 
+#     settings {
+#       tier = "db-g1-small"
+#     }
+#   
+# }
